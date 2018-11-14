@@ -1,13 +1,15 @@
 const models = require("../models")
 
 exports.getAll = (req, res) => {
+    console.log("test")
+
     models.products
         .findAll()
         .then(products => {
             if (products === []) {
-                res.send("data not fund")
+                return res.send("data not fund")
             } else {
-                res.send(products)
+                return res.send(products)
             }
         })
         .catch(err => res.send(err))

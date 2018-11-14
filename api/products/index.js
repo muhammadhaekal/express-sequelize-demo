@@ -1,13 +1,14 @@
 const express = require("express")
 const router = express.Router()
 const controller = require("./controller")
+const helpers = require("../helpers")
 
-router.get("/search", controller.search)
-router.get("/", controller.getAll)
-router.post("/", controller.post)
-router.delete("/:id", controller.deleteOne)
-router.delete("/", controller.deleteAll)
-router.put("/:id", controller.update)
+router.get("/search", helpers.isAuthenticated, controller.search)
+router.get("/", helpers.isAuthenticated, controller.getAll)
+router.post("/", helpers.isAuthenticated, controller.post)
+router.delete("/:id", helpers.isAuthenticated, controller.deleteOne)
+router.delete("/", helpers.isAuthenticated, controller.deleteAll)
+router.put("/:id", helpers.isAuthenticated, controller.update)
 
 
 
